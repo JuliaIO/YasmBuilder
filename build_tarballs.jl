@@ -2,6 +2,9 @@
 # `julia build_tarballs.jl --help` to see a usage message.
 using BinaryBuilder
 
+name = "YasmBuilder"
+version = v"1.3.0"
+
 # Collection of sources required to build YasmBuilder
 sources = [
     "http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz" =>
@@ -41,5 +44,5 @@ dependencies = [
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
-build_tarballs(ARGS, "YasmBuilder", sources, script, platforms, products, dependencies)
+build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies)
 
