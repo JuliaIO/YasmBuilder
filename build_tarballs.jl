@@ -22,16 +22,17 @@ make install
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 platforms = [
-    Linux(:x86_64, :glibc)
+    Linux(:x86_64, :glibc),
+    Linux(:x86_64, :musl)
 ]
 
 # The products that we will ensure are always built
 products(prefix) = [
-    LibraryProduct(prefix, "libyasm", Symbol("")),
-    ExecutableProduct(prefix, "", Symbol("")),
-    ExecutableProduct(prefix, "", Symbol("")),
-    LibraryProduct(prefix, "libyasmstd", Symbol("")),
-    ExecutableProduct(prefix, "", Symbol(""))
+    LibraryProduct(prefix, "libyasm", :libyasm),
+    ExecutableProduct(prefix, "", :yasm),
+    ExecutableProduct(prefix, "", :ytasm),
+    LibraryProduct(prefix, "libyasmstd", :libyasmstd),
+    ExecutableProduct(prefix, "", :vsyasm)
 ]
 
 # Dependencies that must be installed before this package can be built
