@@ -16,6 +16,7 @@ sources = [
 script = raw"""
 cd $WORKSPACE/srcdir
 cd yasm-1.3.0/
+./configure
 cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain
 make -j${nproc}
 make install
