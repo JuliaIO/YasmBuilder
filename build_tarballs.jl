@@ -16,10 +16,9 @@ sources = [
 script = raw"""
 cd $WORKSPACE/srcdir
 cd yasm-1.3.0/
-./configure --prefix=$prefix --exec-prefix=$prefix --host=$target CCLD_FOR_BUILD="$CC"
+./configure --prefix=$prefix --target=$target --build="x86_64-linux-gnu" CCLD_FOR_BUILD="$CC"
 make -j${nproc}
 make install
-
 
 """
 
@@ -38,9 +37,7 @@ products(prefix) = [
 
 # Dependencies that must be installed before this package can be built
 dependencies = [
-    
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
 build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies)
-
