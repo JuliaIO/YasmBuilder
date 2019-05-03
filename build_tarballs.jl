@@ -16,9 +16,15 @@ sources = [
 script = raw"""
 cd $WORKSPACE/srcdir
 cd yasm-1.3.0/
-./configure --prefix=$prefix --host=$target CCLD_FOR_BUILD="$CC"
-make -j${nproc}
-make install
+
+if [[ ${target} == *-w64-mingw* ]]; then
+    ./configure --prefix=$prefix --host=${target} CCLD_FOR_BUILD="$CC"
+    make
+else
+    cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain
+    make -j${nproc}
+    make install
+fi
 
 """
 
