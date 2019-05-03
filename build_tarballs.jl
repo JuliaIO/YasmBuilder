@@ -17,10 +17,11 @@ script = raw"""
 cd $WORKSPACE/srcdir
 cd yasm-1.3.0/
 ./configure --prefix=$prefix --host=$target CCLD_FOR_BUILD="$CC"
+make clean
 make -j${nproc}
 make install
 make distclean
-make clean
+
 
 """
 
