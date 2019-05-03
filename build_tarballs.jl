@@ -16,7 +16,7 @@ sources = [
 script = raw"""
 cd $WORKSPACE/srcdir
 cd yasm-1.3.0/
-CC=gcc ./configure --prefix=$prefix --host=$target
+./configure --prefix=$prefix --host=$target
 make -j${nproc}
 make install
 
