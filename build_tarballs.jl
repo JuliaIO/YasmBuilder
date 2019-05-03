@@ -22,7 +22,6 @@ if [[ ${target} == *-w64-mingw* ]]; then
     make
 else
     cmake -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain
-    make -j${nproc}
     make install
 fi
 
